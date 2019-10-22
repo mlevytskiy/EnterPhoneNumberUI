@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <com.onboarding.enterphonenumberui.LabeledEditText
+        android:id="@+id/phone_number_edit_text"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        app:hintText="Hint text"
+        app:borderColor="@color/colorAccent"
+        app:lBackground="@color/colorPrimaryDark"
+        app:bindCustomKeyboard="@id/in_app_keyboard" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.onboarding.enterphonenumberui.PhoneNumberInAppKeyboard
+        android:id="@id/in_app_keyboard"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@drawable/stripe_repeatable" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp" />
+
+
+</LinearLayout>

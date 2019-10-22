@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LabeledEditText">
+
+        <attr name="bindCustomKeyboard" format="integer"/>
+        <attr name="hintText" format="string" localization="suggested" />
+        <attr name="lBackground" format="color" />
+        <attr name="borderColor" format="color" />
+
+    </declare-styleable>
+
+</resources>
