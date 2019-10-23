@@ -13,20 +13,21 @@
         android:layout_height="wrap_content"
         android:text="TextView" />
 
-    <com.onboarding.enterphonenumberui.LabeledEditText
-        android:id="@+id/phone_number_edit_text"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:padding="8dp"
-        app:hintText="Hint text"
-        app:borderColor="@color/colorAccent"
-        app:lBackground="@color/colorPrimaryDark"
-        app:bindCustomKeyboard="@id/in_app_keyboard" />
+<!--    <com.onboarding.enterphonenumberui.LabeledEditText-->
+<!--        android:id="@+id/phone_number_edit_text"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:padding="8dp"-->
+<!--        app:hintText="Hint text"-->
+<!--        app:borderColor="@color/colorAccent"-->
+<!--        app:lBackground="@color/colorPrimaryDark"-->
+<!--        app:bindCustomKeyboard="@id/in_app_keyboard" />-->
 
     <com.onboarding.enterphonenumberui.PhoneNumberFlipWrapper
         android:id="@+id/phone_number_flip_wrapper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:customKeyboard="@id/in_app_keyboard" />
 
     <View
         android:layout_width="match_parent"

@@ -19,6 +19,7 @@ class LabeledEditText(context: Context, attrs: AttributeSet) : FrameLayout(conte
 
     private var editText: EditText? = null
     private var bindCustomKeyboard: Int? = null
+    private var inAppKeyboard: PhoneNumberInAppKeyboard? = null
     private var hintText: String? = null
     private var lBackground: Int? = null
     private var borderColor: Int? = null
@@ -92,11 +93,24 @@ class LabeledEditText(context: Context, attrs: AttributeSet) : FrameLayout(conte
 
     }
 
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
-        bindCustomKeyboard?.let {
-            val inAppKeyboard = (parent as View).findViewById<PhoneNumberInAppKeyboard>(it)
+    fun getPhoneNumberStr() = editText?.text.toString()
 
+    fun setBindCustomKeyboard(value: Int, parentView: View) {
+        bindCustomKeyboard = value
+        bindKeyboard(parentView)
+    }
+
+    fun unbindCustomKeyboard() {
+        inAppKeyboard?.setListener(null)
+        inAppKeyboard = null
+        bindCustomKeyboard = null
+    }
+
+    private fun bindKeyboard(parentView: View) {
+        bindCustomKeyboard?.let {
+            inAppKeyboard = parentView.findViewById(it)
+
+            inAppKeyboard?.showPlusButton()
             inAppKeyboard?.setListener(object: OnKeyboardClickListener {
                 override fun enterLetter(letter: String) {
                     enterPhoneByUser(editText?.text.toString() + letter)

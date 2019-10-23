@@ -34,7 +34,7 @@
             android:text="Code"
             android:textColor="#ff2090ea"
             style="@style/PhoneNumberEditTextLabelTheme"
-            tools:text="Profile Name" />
+            tools:text="Code" />
 
         <View
             android:layout_width="match_parent"
@@ -42,7 +42,7 @@
             android:layout_weight="1"/>
 
         <TextView
-            android:id="@+id/label2"
+            android:id="@+id/label3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -52,7 +52,7 @@
             android:text="+380 63 000 000 0"
             android:textColor="#ff2090ea"
             style="@style/PhoneNumberEditTextLabelTheme"
-            tools:text="Profile Name" />
+            tools:text="+380 63 000 000 0" />
 
     </LinearLayout>
 

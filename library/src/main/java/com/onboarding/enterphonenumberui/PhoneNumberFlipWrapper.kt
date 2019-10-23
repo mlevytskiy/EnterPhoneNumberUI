@@ -6,6 +6,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
+import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
 
 class PhoneNumberFlipWrapper(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
 
@@ -14,6 +15,9 @@ class PhoneNumberFlipWrapper(context: Context, attrs: AttributeSet) : FrameLayou
     private val cardBackLayout: View
     private val cardFrontLayout: View
     private var isBackVisible = false
+    private var bindCustomKeyboard: Int? = null
+    private var phoneNumberEditText: LabeledEditText? = null
+    private var codeEditText: CodeEditText? = null
 
     init {
         val view = View.inflate(getContext(), R.layout.view_phone_number_flip_wrapper, this)
@@ -21,7 +25,43 @@ class PhoneNumberFlipWrapper(context: Context, attrs: AttributeSet) : FrameLayou
         leftIn = AnimatorInflater.loadAnimator(context, R.animator.in_animation) as AnimatorSet
         cardFrontLayout = view.findViewById(R.id.card_front)
         cardBackLayout = view.findViewById(R.id.card_back)
+        phoneNumberEditText = cardFrontLayout.findViewById(R.id.phone_number_edit_text)
+        codeEditText = cardBackLayout.findViewById(R.id.code_edit_text)
         changeCameraDistance()
+    }
+
+    init { //init view attributes
+        context.theme.obtainStyledAttributes(
+            attrs,
+            R.styleable.PhoneNumberFlipWrapper,
+            0, 0).apply {
+            try {
+                bindCustomKeyboard = getResourceId(R.styleable.PhoneNumberFlipWrapper_customKeyboard, -1)
+            } finally {
+                recycle()
+            }
+        }
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        bindKeyboard()
+    }
+
+    private fun bindKeyboard() {
+        bindCustomKeyboard?.let {
+            if (!isBackVisible) {
+                phoneNumberEditText?.setBindCustomKeyboard(it, parent as View)
+            } else {
+                codeEditText?.setBindCustomKeyboard(it, parent as View)
+            }
+        }
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        phoneNumberEditText?.unbindCustomKeyboard()
+        codeEditText?.unbindCustomKeyboard()
     }
 
     private fun changeCameraDistance() {
@@ -33,6 +73,7 @@ class PhoneNumberFlipWrapper(context: Context, attrs: AttributeSet) : FrameLayou
 
     fun flipCard() {
         if (!isBackVisible) {
+            fillBackCard()
             rightOut.setTarget(cardFrontLayout)
             leftIn.setTarget(cardBackLayout)
             rightOut.start()
@@ -45,6 +86,11 @@ class PhoneNumberFlipWrapper(context: Context, attrs: AttributeSet) : FrameLayou
             leftIn.start()
             isBackVisible = false
         }
+        bindKeyboard()
+    }
+
+    private fun fillBackCard() {
+        codeEditText?.setPhoneNumber(phoneNumberEditText?.getPhoneNumberStr())
     }
 
 }

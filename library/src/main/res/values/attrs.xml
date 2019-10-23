@@ -9,4 +9,10 @@
 
     </declare-styleable>
 
+    <declare-styleable name="PhoneNumberFlipWrapper">
+
+        <attr name="customKeyboard" format="integer"/>
+
+    </declare-styleable>
+
 </resources>

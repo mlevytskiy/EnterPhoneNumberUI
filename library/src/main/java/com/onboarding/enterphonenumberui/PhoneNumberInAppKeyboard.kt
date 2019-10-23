@@ -8,6 +8,7 @@ import android.widget.FrameLayout
 class PhoneNumberInAppKeyboard(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
 
     private var listener: OnKeyboardClickListener? = null
+    private var plusBtn: View? = null
 
     init {
         val view = View.inflate(getContext(), R.layout.view_phone_number_in_app_keyboard, this)
@@ -21,12 +22,21 @@ class PhoneNumberInAppKeyboard(context: Context, attrs: AttributeSet) : FrameLay
         view.findViewById<View>(R.id.button_7).setOnClickListener { listener?.enterLetter("7") }
         view.findViewById<View>(R.id.button_8).setOnClickListener { listener?.enterLetter("8") }
         view.findViewById<View>(R.id.button_9).setOnClickListener { listener?.enterLetter("9") }
-        view.findViewById<View>(R.id.button_plus).setOnClickListener { listener?.enterLetter("+")}
+        plusBtn = view.findViewById<View>(R.id.button_plus)
+        plusBtn?.setOnClickListener { listener?.enterLetter("+")}
         view.findViewById<View>(R.id.button_delete).setOnClickListener { listener?.deleteLastLetter() }
     }
 
-    fun setListener(value: OnKeyboardClickListener) {
+    fun setListener(value: OnKeyboardClickListener?) {
         listener = value
+    }
+
+    fun showPlusButton() {
+        plusBtn?.visibility = View.VISIBLE
+    }
+
+    fun hidePlusButton() {
+        plusBtn?.visibility = View.INVISIBLE
     }
 
 }

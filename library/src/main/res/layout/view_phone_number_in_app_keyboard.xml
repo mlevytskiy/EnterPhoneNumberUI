@@ -100,8 +100,7 @@
             <ImageButton
                 style="@style/Delete.KeyboardButtonTheme"
                 android:id="@+id/button_delete"
-                android:src="@drawable/ic_delete"
-                android:tint="@color/japanese_maple" />
+                android:src="@drawable/ic_delete" />
 
         </LinearLayout>
     </LinearLayout>
