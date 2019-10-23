@@ -23,6 +23,11 @@
         app:lBackground="@color/colorPrimaryDark"
         app:bindCustomKeyboard="@id/in_app_keyboard" />
 
+    <com.onboarding.enterphonenumberui.PhoneNumberFlipWrapper
+        android:id="@+id/phone_number_flip_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -94,22 +94,23 @@ class LabeledEditText(context: Context, attrs: AttributeSet) : FrameLayout(conte
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        val inAppKeyboard = (parent as View).findViewById<PhoneNumberInAppKeyboard>(bindCustomKeyboard!!)
+        bindCustomKeyboard?.let {
+            val inAppKeyboard = (parent as View).findViewById<PhoneNumberInAppKeyboard>(it)
 
-        inAppKeyboard.setListener(object: OnKeyboardClickListener {
-            override fun enterLetter(letter: String) {
-                enterPhoneByUser(editText?.text.toString() + letter)
-            }
-
-            override fun deleteLastLetter() {
-                if (editText!!.text.length > 0) {
-                    enterPhoneByUser(editText!!.text!!.substring(0, editText!!.text.length - 1))
-                } else {
-                    editText?.setText("")
+            inAppKeyboard?.setListener(object: OnKeyboardClickListener {
+                override fun enterLetter(letter: String) {
+                    enterPhoneByUser(editText?.text.toString() + letter)
                 }
-            }
 
-        })
+                override fun deleteLastLetter() {
+                    if (editText!!.text.length > 0) {
+                        enterPhoneByUser(editText!!.text!!.substring(0, editText!!.text.length - 1))
+                    } else {
+                        editText?.setText("")
+                    }
+                }
+            })
+        }
     }
 
     private fun fillMap() {
