@@ -3,31 +3,13 @@
     <item android:state_pressed="false">
         <shape android:shape="oval">
             <solid android:color="@android:color/white" />
-            <stroke android:width="2px" android:color="@color/black2" />
+            <stroke android:width="2px" android:color="@color/mine_shaft_alpha_100" />
         </shape>
     </item>
         <item android:state_pressed="true">
             <shape android:shape="oval">
                 <solid android:color="@color/dodger_blue_alpha_50" />
-                <stroke android:width="2px" android:color="@color/black2" />
+                <stroke android:width="2px" android:color="@color/mine_shaft_alpha_100" />
             </shape>
         </item>
 </selector>
-
-    <!--<?xml version="1.0" encoding="utf-8"?>-->
-    <!--<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >-->
-    <!--&lt;!&ndash;    <item android:drawable="@drawable/stripe_repeatable" />&ndash;&gt;-->
-    <!--<item >-->
-    <!--    <shape android:shape="oval">-->
-    <!--        <gradient-->
-    <!--            android:startColor="@color/dodger_blue_alpha_100"-->
-    <!--            android:endColor="@android:color/white"-->
-    <!--            android:type="linear" />-->
-    <!--&lt;!&ndash;        <solid android:color="@android:color/white" />&ndash;&gt;-->
-
-    <!--        <stroke-->
-    <!--            android:width="1dp"-->
-    <!--            android:color="@color/dodger_blue_alpha_50"/>-->
-    <!--    </shape>-->
-    <!--</item>-->
-    <!--</layer-list>-->

@@ -2,5 +2,6 @@
 <resources>
     <color name="dodger_blue_alpha_100">#FF2090EA</color>
     <color name="dodger_blue_alpha_50">#7F2090EA</color>
-    <color name="black2">#FF202020</color>
+    <color name="mine_shaft_alpha_100">#FF202020</color>
+    <color name="japanese_maple">#BD0711</color>
 </resources>

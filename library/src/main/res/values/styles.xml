@@ -16,4 +16,9 @@
         <item name="android:textSize">16dp</item>
         <item name="android:fontFamily">italic</item>
     </style>
+
+    <style name="Delete.KeyboardButtonTheme" parent="KeyboardButtonTheme">
+        <item name="android:background">@drawable/red_circle_selector</item>
+        <item name="android:textColor">@color/japanese_maple</item>
+    </style>
 </resources>
